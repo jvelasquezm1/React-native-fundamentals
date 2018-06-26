@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { Text, View, StyleSheet, Platform, Image } from 'react-native';
 
 export class Header extends Component {
     constructor(props) {
@@ -18,9 +18,12 @@ export class Header extends Component {
         let display = this.state.isLoggedIn ? 'Sample User' : this.props.message;
         return (
             <View style={styles.headStyle}>
-                <Text 
-                style={styles.headText}
-                onPress={this.toogleUser}>
+                <Image
+                    style={styles.logoStyle}
+                    source={require('./img/android.png')} />
+                <Text
+                    style={styles.headText}
+                    onPress={this.toogleUser}>
                     {display}
                 </Text>
             </View>
@@ -38,7 +41,15 @@ const styles = StyleSheet.create({
         paddingTop: 30,
         paddingBottom: 10,
         paddingRight: 10,
-        backgroundColor: '#35605a',
-        flex: 1
+        backgroundColor: Platform.OS === 'android' ? '#35605a' : '#31e981',
+        flex: 1,
+        flexDirection: 'row',
+        borderBottomWidth: 2,
+        borderColor: '#000'
+    },
+    logoStyle: {
+        flex: 1,
+        width: undefined,
+        height: undefined
     }
 })
