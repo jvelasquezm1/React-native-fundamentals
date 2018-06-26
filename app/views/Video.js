@@ -27,6 +27,7 @@ export class Video extends Component {
     };
 
     render() {
+        const { navigate } = this.props.navigation;
         return (
             <View>
                 {this.state.listLoaded && (
@@ -35,9 +36,10 @@ export class Video extends Component {
                             data={this.state.videoList}
                             renderItem={({ item }) =>
                                 <TubeItem
+                                    navigate={navigate}
                                     id={item.id.videoId}
                                     title={item.snippet.title}
-                        imageSrc={item.snippet.thumbnails.high.url} />} />
+                                    imageSrc={item.snippet.thumbnails.high.url} />} />
                     </View>
                 )}
                 {!this.state.listLoaded && (
@@ -52,8 +54,8 @@ export class Video extends Component {
 
 export class TubeItem extends Component {
     onPress = () => {
-        console.log(this.props.id);
-    }
+        this.props.navigate('VideoDetailRT', {ytubeId: this.props.id});
+    };
     render() {
         return (
             <TouchableWithoutFeedback onPress={this.onPress}>
