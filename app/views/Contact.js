@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableHighlight, Alert } from 'react-native';
 import { Header } from '../sections/Header';
-import { createStackNavigator } from 'react-navigation';
 
-export default class componentName extends Component {
+export default class Contact extends Component {
     static navigationOptions = {
         header: null
     };
