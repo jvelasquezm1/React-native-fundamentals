@@ -20,7 +20,8 @@ export class Header extends Component {
             <View style={styles.headStyle}>
                 <Image
                     style={styles.logoStyle}
-                    source={require('./img/android.png')} />
+                    source={require('./img/logo.png')} 
+                    resizeMode='contain'/>
                 <Text
                     style={styles.headText}
                     onPress={this.toogleUser}>
@@ -49,7 +50,7 @@ const styles = StyleSheet.create({
     },
     logoStyle: {
         flex: 1,
-        width: undefined,
-        height: undefined
+        width: 50,
+        height: 30,
     }
 })

@@ -6,7 +6,7 @@ export class Hero extends Component {
     return (
       <Image
         style={styles.heroImage}
-        source={require('./img/android.png')}
+        source={require('./img/android.jpg')}
       />
     )
   }
