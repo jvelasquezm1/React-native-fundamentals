@@ -23,7 +23,7 @@ export default class Login extends Component {
         } else if (!this.state.password) {
             Alert.alert('Please enter a password');
         } else {
-            AsyncStorage.getItem('userLoggedin', (err, result) => {
+            AsyncStorage.getItem('userLoggedIn', (err, result) => {
                 if (result !== 'none') {
                     Alert.alert('Someone already logged on');
                     this.props.navigation.navigate('HomeRT');
@@ -33,7 +33,7 @@ export default class Login extends Component {
                             if (result !== this.state.password) {
                                 Alert.alert('Password incorrect')
                             } else {
-                                AsyncStorage.getItem('userLoggedin', (err, result) => {
+                                AsyncStorage.setItem('userLoggedIn', this.state.username, (err, result) => {
                                     Alert.alert(`${this.state.username} Logged in`);
                                     this.props.navigation.navigate('HomeRT');
                                 });
@@ -50,7 +50,7 @@ export default class Login extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text style={styles.container}> Login </Text>
+                <Text style={styles.heading}> Login </Text>
 
                 <TextInput
                     style={styles.inputs}

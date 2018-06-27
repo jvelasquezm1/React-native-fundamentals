@@ -23,8 +23,15 @@ export default class Register extends Component {
         } else {
             //Check if username exists
             AsyncStorage.getItem(this.state.username, (err, result) => {
-                Alert.alert(`${this.state.username} account created`);
-                this.props.navigation.navigate('HomeRT');
+                if (result !== null) {
+                    Alert.alert(`${this.state.username} already exists`);
+                } else {
+                    AsyncStorage.setItem(this.state.username, this.state.password, (err, result) => {
+                        Alert.alert(`${this.state.username} account created`);
+                        this.props.navigation.navigate('HomeRT');
+                    });
+
+                }
             });
         }
     }
@@ -55,7 +62,7 @@ export default class Register extends Component {
                 <TouchableHighlight onPress={this.cancelRegister} underlayColor='#31e981'>
                     <Text style={styles.buttons}> Cancel </Text>
                 </TouchableHighlight>
-                
+
             </View>
         );
     }
@@ -81,7 +88,7 @@ const styles = StyleSheet.create({
     labels: {
         paddingBottom: 10,
     },
-    buttons:{
+    buttons: {
         marginTop: 15,
         fontSize: 16
     }
