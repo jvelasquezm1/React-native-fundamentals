@@ -32,7 +32,7 @@ export class Menu extends Component {
 
                 
                 <View style={styles.buttonRow}>
-                    <TouchableOpacity style={styles.buttonStyles} onPress={this.onPress}>
+                    <TouchableOpacity style={styles.buttonStyles} onPress={()=>this.props.navigate('QuizRT')}>
                         <Text style={styles.buttonText}>QUIZ</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.buttonStyles} onPress={this.onPress}>

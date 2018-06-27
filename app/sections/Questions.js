@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableHighlight } from 'react-native';
+import { View, Text, TouchableHighlight, StyleSheet } from 'react-native';
 
 export default class Question extends Component {
 
@@ -13,7 +13,7 @@ export default class Question extends Component {
     };
 
     chooseAnswer = (ans) => {
-        let worth = 25;
+        let worth = 14.28;
         if (ans === this.props.correctAnswer) {
             this.setState({
                 selected: true,
