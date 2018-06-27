@@ -10,6 +10,7 @@ import Quiz from './app/views/Quiz';
 import QuizFinish from './app/views/QuizFinish';
 import { Blog } from './app/views/Blog';
 import BlogDetail from './app/views/BlogDetail';
+import About from './app/views/About';
 
 const MyRoutes = createStackNavigator({
   HomeRT: {
@@ -41,6 +42,9 @@ const MyRoutes = createStackNavigator({
   },
   BlogDetailRT: {
     screen: BlogDetail
+  },
+  AboutRT: {
+    screen: About
   }
 },
   {
