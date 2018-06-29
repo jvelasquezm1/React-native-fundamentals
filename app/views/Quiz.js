@@ -54,7 +54,8 @@ export default class Quiz extends Component {
             'QuizFinishRT', {
                 score: this.state.totalScore,
                 missed: this.state.incorrect,
-                questions: this.state.numberOfQuestions
+                questions: this.state.numberOfQuestions,
+                questionsReview: this.state.questList,
             }
         )
     }
