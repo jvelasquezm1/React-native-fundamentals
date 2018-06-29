@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { View, Text, TouchableHighlight, StyleSheet } from 'react-native';
+import { connect } from "react-redux";
+import {questionSelected} from '../actions/quiz.action';
 
-export default class Question extends Component {
+class Question extends Component {
 
     static navigationOptions = {
         header: null
@@ -14,6 +16,7 @@ export default class Question extends Component {
 
     chooseAnswer = (ans) => {
         let worth = 14.28;
+        this.props.dispatch(questionSelected(ans));
         if (ans === this.props.correctAnswer) {
             this.setState({
                 selected: true,
@@ -100,8 +103,14 @@ const styles = StyleSheet.create({
     },
     answerText: {
         flex: 2,
-        padding:15,
+        padding: 15,
         fontSize: 20,
         textAlign: 'center'
     }
 });
+
+const mapStateToProps = () => {
+    return { }
+}
+
+export default Question = connect(mapStateToProps)(Question);

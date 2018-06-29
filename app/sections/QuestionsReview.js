@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import { connect } from "react-redux";
 
-export default class QuestionsReview extends Component {
+class QuestionsReview extends Component {
 
     static navigationOptions = {
         header: null
@@ -51,3 +52,9 @@ const styles = StyleSheet.create({
         borderColor: '#008000',
     }
 });
+
+const mapStateToProps = (state) => {
+    return { selectedAnswer: state.quizReducer }
+}
+
+export default QuestionsReview = connect(mapStateToProps)(QuestionsReview);

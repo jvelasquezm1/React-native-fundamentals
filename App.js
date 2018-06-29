@@ -11,6 +11,8 @@ import QuizFinish from './app/views/QuizFinish';
 import { Blog } from './app/views/Blog';
 import BlogDetail from './app/views/BlogDetail';
 import About from './app/views/About';
+import {Provider} from 'react-redux';
+import {store} from './app/Store.js';
 
 const MyRoutes = createStackNavigator({
   HomeRT: {
@@ -55,7 +57,9 @@ const MyRoutes = createStackNavigator({
 export default class App extends React.Component {
   render() {
     return (
+      <Provider store={store}>
       <MyRoutes />
+      </Provider>
     );
   }
 }
