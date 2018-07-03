@@ -75,6 +75,7 @@ export default class Quiz extends Component {
                                 answer3={item.answer3}
                                 answer4={item.answer4}
                                 correctAnswer={item.correctAnswer}
+                                keys={item.key}
                                 scoreUpdate={this.updateScore}
                             />
                         }

@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import { connect } from "react-redux";
 
-class QuestionsReview extends Component {
+export default class QuestionsReview extends Component {
 
     static navigationOptions = {
         header: null
@@ -10,11 +9,20 @@ class QuestionsReview extends Component {
 
     checkCorrectStyle = (answer) => {
         let styleCorrect = '';
-        this.props.correctAnswer === answer ? styleCorrect = styles.correctAnswer : styleCorrect = styles.answerText;
+        if (this.props.selectedAnswer === this.props.correctAnswer && this.props.selectedAnswer === answer) {
+            styleCorrect = styles.correctAnswer
+        } else if(this.props.correctAnswer === answer) {
+            styleCorrect = styles.correctSelectedAnswer;
+        } else if(this.props.selectedAnswer === answer && this.props.selectedAnswer !== this.props.correctAnswer) {
+            styleCorrect = styles.wrongAnswer;
+        } else {
+            styleCorrect = styles.answerText;
+        }
         return styleCorrect;
-    }
+    };
 
     render() {
+        console.log(this.props.selectedAnswer, '###', this.props.correctAnswer)
         return (
             <View style={styles.container}>
                 <Text style={styles.questionText}> {this.props.question} </Text>
@@ -50,11 +58,21 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         borderWidth: 3,
         borderColor: '#008000',
+    },
+    correctSelectedAnswer: {
+        flex: 2,
+        padding: 15,
+        fontSize: 20,
+        textAlign: 'center',
+        borderWidth: 3,
+        borderColor: '#8fbc8f',
+    },
+    wrongAnswer: {
+        flex: 2,
+        padding: 15,
+        fontSize: 20,
+        textAlign: 'center',
+        borderWidth: 3,
+        borderColor: '#8b0000',
     }
 });
-
-const mapStateToProps = (state) => {
-    return { selectedAnswer: state.quizReducer }
-}
-
-export default QuestionsReview = connect(mapStateToProps)(QuestionsReview);

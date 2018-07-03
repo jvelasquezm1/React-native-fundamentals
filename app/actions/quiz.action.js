@@ -1,6 +1,9 @@
-export const questionSelected = (data) => {    
+export const questionSelected = (data, key) => {    
     return {
         type: "SELECTED",
-        payload: data
+        payload: {
+            data,
+            key
+        }
     }
 }
