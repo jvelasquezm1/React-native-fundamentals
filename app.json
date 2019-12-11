@@ -1,5 +1,12 @@
 {
   "expo": {
-    "sdkVersion": "27.0.0"
+    "sdkVersion": "33.0.0",
+    "name": "globo",
+    "slug": "globo",
+    "version": "0.1.0",
+    "platforms": [
+      "android",
+      "ios"
+    ]
   }
 }

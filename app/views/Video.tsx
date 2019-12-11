@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
 import { View, FlatList, Text, Image, TouchableWithoutFeedback } from 'react-native';
 
-export class Video extends Component {
+export class Video extends Component<{ navigation?: any }>  {
     static navigationOptions = {
         header: null
     };
-    constructor(props) {
-        super(props);
-        this.state = {
-            listLoaded: false
-        };
+    state = {
+        listLoaded: '',
+        videoList: {} as any,
+
     }
     componentDidMount = () => {
         return fetch(
@@ -35,11 +34,13 @@ export class Video extends Component {
                         <FlatList
                             data={this.state.videoList}
                             renderItem={({ item }) =>
-                                <TubeItem
-                                    navigate={navigate}
-                                    id={item.id.videoId}
-                                    title={item.snippet.title}
-                                    imageSrc={item.snippet.thumbnails.high.url} />} />
+                                // <TubeItem
+                                //     navigate={navigate}
+                                //     id={item.id.videoId}
+                                //     title={item.snippet.title}
+                                //     imageSrc={item.snippet.thumbnails.high.url} />
+                                <div>oka</div>
+                            } />
                     </View>
                 )}
                 {!this.state.listLoaded && (
@@ -52,9 +53,9 @@ export class Video extends Component {
     }
 }
 
-export class TubeItem extends Component {
+export class TubeItem extends Component<{ navigate?: any, imageSrc: any, id: any, title: any }>  {
     onPress = () => {
-        this.props.navigate('VideoDetailRT', {ytubeId: this.props.id});
+        this.props.navigate('VideoDetailRT', { ytubeId: this.props.id });
     };
     render() {
         return (

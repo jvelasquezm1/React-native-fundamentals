@@ -11,7 +11,7 @@ export class Header extends Component {
 
     toogleUser = () => {
         if(this.state.isLoggedIn) {
-            AsyncStorage.setItem('userLoggedIn', 'none', (err, result) => {
+            AsyncStorage.setItem('userLoggedIn', 'none', () => {
                 this.setState({
                     isLoggedIn: false,
                     loggedUser: false
@@ -19,7 +19,7 @@ export class Header extends Component {
                 Alert.alert('User logged out');
             });
         } else {
-            this.props.navigate('LoginRT');
+            this.props.navigation('LoginRT');
         }
     };
 
@@ -28,7 +28,7 @@ export class Header extends Component {
             if (result === 'none') {
                 console.log('NONE');
             } else if (result === null) {
-                AsyncStorage.setItem('userLoggedIn', 'none', (err, result) => {
+                AsyncStorage.setItem('userLoggedIn', 'none', () => {
                     console.log('Set user to NONE')
                 });
             } else {

@@ -1,7 +1,10 @@
 import React from 'react';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import { createStackNavigator } from 'react-navigation-stack';
+
 import Home from './app/views/Home';
 import Contact from './app/views/Contact';
-import { createStackNavigator } from 'react-navigation';
 import { Video } from './app/views/Video';
 import { VideoDetail } from './app/views/VideoDetail';
 import Register from './app/views/Register';
@@ -11,8 +14,8 @@ import QuizFinish from './app/views/QuizFinish';
 import { Blog } from './app/views/Blog';
 import BlogDetail from './app/views/BlogDetail';
 import About from './app/views/About';
-import {Provider} from 'react-redux';
-import {store} from './app/Store.js';
+import {rootReducer} from "./app/reducers/index";
+const store = createStore(rootReducer)
 
 const MyRoutes = createStackNavigator({
   HomeRT: {
@@ -54,11 +57,12 @@ const MyRoutes = createStackNavigator({
   }
 );
 
+
 export default class App extends React.Component {
   render() {
     return (
       <Provider store={store}>
-      <MyRoutes />
+        <MyRoutes />
       </Provider>
     );
   }

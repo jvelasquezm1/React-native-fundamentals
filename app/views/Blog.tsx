@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, FlatList } from 'react-native';
-import HTML from 'react-native-render-html'
+// import HTML from 'react-native-render-html'
 
 export class Blog extends Component {
 

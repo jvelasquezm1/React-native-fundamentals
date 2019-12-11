@@ -4,18 +4,17 @@ import { Header } from '../sections/Header';
 import { Hero } from '../sections/Hero';
 import { Menu } from '../sections/Menu';
 
-class Home extends Component {
+class Home extends Component<{ navigation?: any }> {
     static navigationOptions = {
         header: null
     };
 
     render() {
-        const { navigate } = this.props.navigation;
         return (
             <View style={styles.container}>
-                <Header navigate = {navigate} message='Press to Login' />
+                <Header navigation={this.props.navigation} message='Press to Login' />
                 <Hero />
-                <Menu navigate = {navigate}/>
+                <Menu navigation={this.props.navigation} />
             </View>
         );
     }
